@@ -5,6 +5,10 @@ FROM $BASE_IMAGE:$RELEASE
 ARG PROJECT_NAME
 ARG JAVA_VERSION
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+ENV LANG C.UTF-8
+
 RUN apt update -qq && \
     apt install -yq --no-install-recommends \
       openjdk-$JAVA_VERSION-jre-headless
