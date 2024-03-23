@@ -11,9 +11,9 @@ services:
       args:
         PROJECT_NAME: ${COMPOSE_PROJECT_NAME}
         BASE_IMAGE: ${BASE_IMAGE}
+        RELEASE: ${RELEASE}
         JAVA_VERSION: ${JAVA_VERSION}
-        LINUX_DISTRO: ${LINUX_DISTRO}
-    image: ${COMPOSE_PROJECT_NAME}:${BASE_IMAGE}-${JAVA_VERSION}-${LINUX_DISTRO}
+    image: ${COMPOSE_PROJECT_NAME}:${BASE_IMAGE}-${RELEASE}
     tmpfs:
       - /run
       - /tmp
@@ -37,7 +37,7 @@ services:
       - |
         usermod --uid ${UID:-1000} spring
         groupmod --gid ${GID:-1000} spring
-        exec su-exec spring /bin/bash
+        su spring -P -c bash
 
   server:
     <<: *backend
@@ -47,7 +47,7 @@ services:
       - |
         usermod --uid ${UID:-1000} spring
         groupmod --gid ${GID:-1000} spring
-        exec su-exec spring ./gradlew bootRun
+        su spring -P -c "./gradlew bootRun"
 
 
 volumes:
