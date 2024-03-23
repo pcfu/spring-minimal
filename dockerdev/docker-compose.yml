@@ -31,11 +31,23 @@ services:
 
   cli:
     <<: *backend
-    command: /bin/sh -c "/bin/bash"
+    command:
+      - /bin/sh
+      - -c
+      - |
+        usermod --uid ${UID:-1000} spring
+        groupmod --gid ${GID:-1000} spring
+        exec su-exec spring /bin/bash
 
   server:
     <<: *backend
-    command: /bin/sh -c "./gradlew bootRun"
+    command:
+      - /bin/sh
+      - -c
+      - |
+        usermod --uid ${UID:-1000} spring
+        groupmod --gid ${GID:-1000} spring
+        exec su-exec spring ./gradlew bootRun
 
 
 volumes:

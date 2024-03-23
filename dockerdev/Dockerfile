@@ -7,6 +7,8 @@ ARG PROJECT_NAME
 
 RUN apk update && \
     apk add \
+      shadow \
+      su-exec \
       bash
 
     # Add user
@@ -20,5 +22,3 @@ RUN adduser -D spring && \
     chown -R spring:spring /home/spring
 
 WORKDIR /$PROJECT_NAME
-
-USER spring
