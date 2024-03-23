@@ -1,0 +1,43 @@
+version: "3.8"
+
+
+services:
+  app: &app
+    profiles:
+      - app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PROJECT_NAME: ${COMPOSE_PROJECT_NAME}
+        BASE_IMAGE: ${BASE_IMAGE}
+        JAVA_VERSION: ${JAVA_VERSION}
+        LINUX_DISTRO: ${LINUX_DISTRO}
+    image: ${COMPOSE_PROJECT_NAME}:${BASE_IMAGE}-${JAVA_VERSION}-${LINUX_DISTRO}
+    tmpfs:
+      - /run
+      - /tmp
+
+  backend: &backend
+    <<: *app
+    container_name: ${COMPOSE_PROJECT_NAME}
+    stdin_open: true
+    tty: true
+    volumes:
+      - ..:/${COMPOSE_PROJECT_NAME}:cached
+      - gradle:/home/spring/.gradle:delegated
+    ports:
+      - 8080:8080
+
+  cli:
+    <<: *backend
+    command: /bin/sh -c "/bin/bash"
+
+  server:
+    <<: *backend
+    command: /bin/sh -c "./gradlew bootRun"
+
+
+volumes:
+  gradle:
+    name: ${COMPOSE_PROJECT_NAME}_gradle
