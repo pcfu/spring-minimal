@@ -36,18 +36,20 @@ services:
       - /bin/sh
       - -c
       - |
-        usermod --uid ${UID:-1000} spring
-        groupmod --gid ${GID:-1000} spring
+        usermod --uid ${USERID:-1000} spring
+        groupmod --gid ${GROUPID:-1000} spring
         su spring -P -c bash
 
   server:
     <<: *backend
+    profiles:
+      - full
     command:
       - /bin/sh
       - -c
       - |
-        usermod --uid ${UID:-1000} spring
-        groupmod --gid ${GID:-1000} spring
+        usermod --uid ${USERID:-1000} spring
+        groupmod --gid ${GROUPID:-1000} spring
         su spring -P -c "./dockerdev/run-server.sh"
 
 
