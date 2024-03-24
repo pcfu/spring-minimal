@@ -17,10 +17,15 @@ repositories {
 }
 
 dependencies {
+	/* ALL */
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+	/* DEVELOPMENT */
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	/* TEST */
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
