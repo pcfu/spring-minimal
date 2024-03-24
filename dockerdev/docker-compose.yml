@@ -28,6 +28,7 @@ services:
       - gradle:/home/spring/.gradle:delegated
     ports:
       - 8080:8080
+      - 35729:35729
 
   cli:
     <<: *backend
