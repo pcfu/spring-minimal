@@ -11,9 +11,10 @@ ENV LANG C.UTF-8
 
 RUN apt update -qq && \
     apt install -yq --no-install-recommends \
-      openjdk-$JAVA_VERSION-jre-headless
+      openjdk-$JAVA_VERSION-jre-headless \
+      inotify-tools \
+    && rm -rf /var/lib/apt/lists/*
 
-    # Add user
 RUN adduser spring && \
     # Add project directory
     mkdir -p /$PROJECT_NAME && \
