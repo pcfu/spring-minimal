@@ -11,8 +11,9 @@ ENV LANG C.UTF-8
 
 RUN apt update -qq && \
     apt install -yq --no-install-recommends \
-      openjdk-$JAVA_VERSION-jre-headless \
       inotify-tools \
+      lsof \
+      openjdk-$JAVA_VERSION-jre-headless \
     && rm -rf /var/lib/apt/lists/*
 
 RUN adduser spring && \
