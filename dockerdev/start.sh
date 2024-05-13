@@ -10,7 +10,7 @@ fi
 
 case "$service" in
     cli|server)
-        USERID=$(id -u) GROUPID=$(id -g) docker-compose run --rm --service-ports --name=spring-minimal $service
+        USERID=$(id -u) GROUPID=$(id -g) docker-compose run --rm --service-ports --name=spring-container $service
         ;;
     full)
         USERID=$(id -u) GROUPID=$(id -g) docker-compose --profile=full up
