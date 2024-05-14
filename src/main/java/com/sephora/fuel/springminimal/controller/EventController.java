@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.sephora.fuel.springminimal.service.EventService;
 import com.sephora.fuel.springminimal.document.Event;
+import com.sephora.fuel.springminimal.document.EventStage;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/events")
@@ -23,7 +25,11 @@ public class EventController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addUser() {
-        Event e = new Event("Demo", "SG", "test event");
+        EventStage stage = new EventStage("20240101", "prelaunch");
+        List<EventStage> stages = new ArrayList<>();
+        stages.add(stage);
+
+        Event e = new Event("Demo", "SG", "test event", stages);
         eventService.addEvent(e);
         return e.getId();
     }
