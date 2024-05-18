@@ -27,4 +27,4 @@ jobs:
         with:
           gradle-version: 8.6
       - name: Run tests
-        run: ./gradlew test
+        run: ./gradlew --console=plain test
