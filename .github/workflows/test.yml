@@ -3,14 +3,14 @@ name: Test
 on:
   workflow_dispatch:
     branches:
-      - "**"
+      - '**'
   push:
     branches:
-      - "main"
+      - 'main'
   pull_request:
     branches:
-      - "**"
-      - "!main"
+      - '**'
+      - '!main'
 
 jobs:
   test:
