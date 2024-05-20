@@ -49,7 +49,23 @@ services:
         groupmod --gid ${GROUPID:-1000} spring
         su spring -P -c "dockerdev/run-server.sh"
 
+  mongo:
+    profiles:
+      - support
+    image: mongo:7.0
+    container_name: mongo
+    hostname: mongo
+    volumes:
+      - mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+
 
 volumes:
   gradle:
     name: ${COMPOSE_PROJECT_NAME}_gradle
+  mongo:
+    name: ${COMPOSE_PROJECT_NAME}_mongo
