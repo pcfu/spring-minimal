@@ -1,6 +1,7 @@
 package com.sephora.fuel.springminimal.exception;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import com.sephora.fuel.springminimal.exception.RecordNotFoundException;
 import com.sephora.fuel.springminimal.exception.ErrorResponse;
 
-@RestControllerAdvice
+@RestControllerAdvice(annotations = RestController.class)
 public class RestExceptionHandler {
 
     @ExceptionHandler
