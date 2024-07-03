@@ -3,6 +3,7 @@ plugins {
     war
     id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.4"
+    id("io.freefair.lombok") version "8.6"
 }
 
 group = "com.sephora.fuel"
@@ -19,6 +20,8 @@ repositories {
 dependencies {
     /* ALL */
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.postgresql:postgresql:42.7.2")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 

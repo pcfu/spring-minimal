@@ -49,7 +49,24 @@ services:
         groupmod --gid ${GROUPID:-1000} spring
         su spring -P -c "dockerdev/run-server.sh"
 
+  postgres:
+    profiles:
+      - support
+    image: postgres:16.3
+    container_name: postgres
+    hostname: postgres
+    volumes:
+      - ${COMPOSE_PROJECT_NAME}_postgres:/var/lib/postgresql/data
+    environment:
+      PSQL_HISTFILE: /root/log/.psql_history
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+    ports:
+      - 5432:5432
+
 
 volumes:
   gradle:
     name: ${COMPOSE_PROJECT_NAME}_gradle
+  postgres:
+    name: ${COMPOSE_PROJECT_NAME}_postgres
