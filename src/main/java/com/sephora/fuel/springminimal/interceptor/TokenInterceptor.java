@@ -13,7 +13,7 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     // Request is intercepted BEFORE reaching the Controller
     @Override
-	public boolean preHandle(HttpServletRequest request,
+    public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws Exception {
 
@@ -32,9 +32,9 @@ public class TokenInterceptor implements HandlerInterceptor {
         return true;
     }
 
-	// Response from controller is intercepted BEFORE reaching the client
-	@Override
-	public void postHandle(HttpServletRequest request,
+    // Response from controller is intercepted BEFORE reaching the client
+    @Override
+    public void postHandle(HttpServletRequest request,
                            HttpServletResponse response,
                            Object handler,
                            ModelAndView modelAndView) throws Exception {
@@ -43,14 +43,14 @@ public class TokenInterceptor implements HandlerInterceptor {
     }
 
 	// Callback AFTER request & response complete
-	@Override
-	public void afterCompletion(HttpServletRequest request,
+    @Override
+    public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response,
                                 Object handler,
                                 Exception ex) throws Exception {
 
         logger.info("===== IN AFTER_COMPLETION =====");
-	}
+    }
 
     class ExternalTokenService {
         public static String getToken() {
