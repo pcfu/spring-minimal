@@ -23,6 +23,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.postgresql:postgresql:42.7.2")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("commons-io:commons-io:2.6")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
     /* DEVELOPMENT */
