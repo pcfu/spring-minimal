@@ -15,8 +15,8 @@ public class JacksonConfig {
     @Primary
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
-        mapper.setVisibility(PropertyAccessor.GETTER, Visibility.NONE);
+        // mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+        // mapper.setVisibility(PropertyAccessor.GETTER, Visibility.NONE);
         mapper.setSerializationInclusion(Include.NON_NULL);
         return mapper;
     }
