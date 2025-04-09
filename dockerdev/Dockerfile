@@ -13,8 +13,13 @@ RUN apt update -qq && \
     apt install -yq --no-install-recommends \
       inotify-tools \
       lsof \
-      openjdk-$JAVA_VERSION-jre-headless \
+      wget \
+      java-common \
     && rm -rf /var/lib/apt/lists/*
+
+RUN wget --no-check-certificate -P / https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-linux-jdk.deb && \
+    dpkg --install /amazon-corretto-17-aarch64-linux-jdk.deb && \
+    rm /amazon-corretto-17-aarch64-linux-jdk.deb
 
 RUN adduser spring && \
     # Add project directory
