@@ -12,10 +12,14 @@ public class RandomGreetingController {
 	public String greeting(@Value("#{new java.util.Random()}") Random r) {
         int rInt = r.nextInt();
 
-        if (rInt % 2 == 1) {
+        if (rInt % 4 == 0) {
     		return "Hello World!";
-        } else {
+        } else if (rInt % 4 == 1) {
             return "Hey there!";
+        } else if (rInt % 4 == 2) {
+            return "Yo!";
+        } else {
+            return "How's it going?";
         }
 	}
 }

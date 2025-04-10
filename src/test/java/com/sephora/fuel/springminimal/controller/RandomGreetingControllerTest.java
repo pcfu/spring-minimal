@@ -26,16 +26,21 @@ public class RandomGreetingControllerTest {
     class Greeting {
 
         @Test
-        public void testRandomOddInteger() {
-            Mockito.when(r.nextInt()).thenReturn(1);
+        public void testRandomIntegerZero() {
+            Mockito.when(r.nextInt()).thenReturn(0);
             Assertions.assertEquals("Hello World!", controller.greeting(r));
         }
 
         @Test
-        public void testRandomEvenInteger() {
-            Mockito.when(r.nextInt()).thenReturn(0);
+        public void testRandomIntegerOne() {
+            Mockito.when(r.nextInt()).thenReturn(1);
             Assertions.assertEquals("Hey there!", controller.greeting(r));
         }
 
+        @Test
+        public void testRandomIntegerTwo() {
+            Mockito.when(r.nextInt()).thenReturn(2);
+            Assertions.assertEquals("Yo!", controller.greeting(r));
+        }
     }
 }
