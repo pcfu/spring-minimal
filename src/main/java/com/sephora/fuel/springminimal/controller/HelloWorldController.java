@@ -8,6 +8,8 @@ public class HelloWorldController {
 
 	@GetMapping(value={"/", "hello"})
 	public String greeting() {
+        System.out.println("testing code climate integration");
+
 		return "Hello World!";
 	}
 }
